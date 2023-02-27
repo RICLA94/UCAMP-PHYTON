@@ -5,6 +5,8 @@ if personas == 0:
 
 while personas > 0:
 
+#NOMBRE Y APPELLIDOS
+
     nombre = str(input('Ingresa tu nombre por favor: '))
     while len(nombre)==0:
         nombre=str(input('Olvidaste tu nombre, por favor ingresalo: '))
@@ -13,37 +15,48 @@ while personas > 0:
     while len(apellido_paterno)==0:
         apellido_paterno=str(input('Olvidaste tu apellido paterno, por favor ingresalo: '))
 
-    apellido_materno = str(input('Ingresa tu apellido paterno por favor: '))
+    apellido_materno = str(input('Ingresa tu apellido materno por favor: '))
     while len(apellido_materno)==0:
         apellido_materno=str(input('Olvidaste tu apellido materno, por favor ingresalo: '))
-
+#EDAD
     while True:
         edad = input('Ingresa tu edad en años: ')
         try:
             edad = int(edad)
-            break
+            if edad > 0:
+                break
+            elif edad == 0:
+                print ('*La edad no puede ser igual a 0')
         except ValueError:
             print ('Usa solo numeros| No dejes vacio el campo.')
 
+#PESO
     while True:
         peso = input('Ingresa tu peso en Kg: ')
         try:
-            peso = float(peso)
-            break
+            peso = float(peso) 
+            if peso > 0:
+                break
+            elif peso == 0:
+                print ('*El peso no puede ser igual a 0')
         except ValueError:
             print ('Usa solo numeros| No dejes vacio el campo.')
-
+#ALTURA
     while True:
         altura = input('Ingresa tu altura en metros: ')
         try:
             altura = float(altura)
-            break
+            if altura > 0:
+                break
+            elif altura == 0:
+                print ('*La altura no puede ser igual a 0')
         except ValueError:
             print ('Usa solo numeros| No dejes vacio el campo.')
 
+#CALCULO DE IMC
     indice_masa_corporal = (peso / altura**2)
 
-
+#EVALUACIÓN DE IMC
     if indice_masa_corporal >= 0 and indice_masa_corporal <= 15.99 :
         evaluacion = 'Delgadez severa'
     elif indice_masa_corporal >= 16.00 and indice_masa_corporal <= 16.99 :
@@ -55,25 +68,27 @@ while personas > 0:
     elif indice_masa_corporal >= 25.00 and indice_masa_corporal <= 29.99:
         evaluacion= "Sobrepeso"
     elif indice_masa_corporal >= 30.00 and indice_masa_corporal <= 34.99:
-        evaluacion="obesidad leve"
+        evaluacion="Obesidad leve"
     elif indice_masa_corporal >= 35.00 and indice_masa_corporal <= 39.00:
-        evaluacion="obesidad media"
+        evaluacion="Obesidad media"
     elif indice_masa_corporal >= 40.00:
-        evaluacion="obesidad morbida"
-            
+        evaluacion="Obesidad morbida"
+
+#IMPRESION DE RESULTADOS        
     if edad >= 18:
         print (f'¡Muchas gracias por los datos! {nombre}, tu eres mayor de edad y tu IMC es: {indice_masa_corporal:.2f}')
     else:
         print (f'¡Muchas gracias por los datos! {nombre}, tu eres menor de edad y tu IMC es: {indice_masa_corporal:.2f}.')
-    print (f'''      ---------------------RESUMEN DE DATOS INGRESADOS---------------------
+    print (f'''
+        ---------------------RESUMEN DE DATOS INGRESADOS---------------------
       Nombre:{nombre} {apellido_paterno} {apellido_materno}.
       Edad: {edad} años.
       Altura: {altura} metros.
       peso: {peso} kilos.
-      -------------------------------RESULTADO--------------------------------------
+        -------------------------------RESULTADO-----------------------------
       Tu indice de masa corporal nos indica que puedes presentar: {evaluacion}.
       Por favor revisa con tu medico los resultados para un diagnostico mas acertado.''')
-
+#CONTADOR DE PERSONAS MENOS 1
     personas = personas-1
 
     if personas == 0:
